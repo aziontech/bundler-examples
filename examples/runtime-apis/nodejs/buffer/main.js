@@ -1,7 +1,7 @@
 /**
  * An example of using the Node.js Buffer API in a Azion Edge Function.
  * Support:
- * - Fully supported
+ * - Partial support
  * @module runtime-apis/nodejs/buffer/main
  * @example
  * // Execute with Azion Bundler:

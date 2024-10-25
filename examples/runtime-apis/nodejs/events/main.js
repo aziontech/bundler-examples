@@ -1,7 +1,7 @@
 /**
  * An example of using the Node.js `events` module in Azion Edge Functions.
  * Support:
- * - Fully supported
+ * - Partial support
  * - Extended by library `events`
  * @example
  * // Execute with Azion Bundler:

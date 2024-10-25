@@ -1,7 +1,7 @@
 /**
  * An Example of using the Node.js Async Hooks API in an Azion Edge Function.
  * Support:
- * - Fully supported
+ * - Partial support
  * @module runtime-apis/nodejs/async-hooks/main
  * @example
  * // Execute with Azion Bundler:
