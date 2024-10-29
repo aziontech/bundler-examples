@@ -17,8 +17,12 @@ import zlib from "node:zlib";
  */
 const main = async (event) => {
   const body = event.body ?? "Hello, World!";
-  const input = Buffer.from(body, "base64");
-  const output = zlib.gzipSync(input);
+  const output = zlib.gzipSync(body);
+
+  // decode
+  const decom = zlib.gunzipSync(Buffer.from(output)).toString();
+  console.log(decom);
+
   return new Response(output.toString("base64"), {
     headers: {
       "Content-Type": "application/octet-stream",
