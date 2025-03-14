@@ -1,7 +1,5 @@
 module.exports = {
   build: {
-    preset: {
-      name: 'vitepress',
-    },
+    preset: "vitepress",
   },
 };

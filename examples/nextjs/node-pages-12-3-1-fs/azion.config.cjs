@@ -1,9 +1,6 @@
 module.exports = {
   build: {
-    builder: "esbuild",
-    preset: {
-      name: "next",
-    },
+    preset: "next",
     polyfills: true,
     memoryFS: {
       injectionDirs: ["data"],

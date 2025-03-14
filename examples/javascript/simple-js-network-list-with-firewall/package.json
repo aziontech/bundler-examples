@@ -10,7 +10,5 @@
   "keywords": [],
   "author": "aziontech",
   "license": "ISC",
-  "dependencies": {
-    "azion": "latest"
-  }
+  "dependencies": {}
 }

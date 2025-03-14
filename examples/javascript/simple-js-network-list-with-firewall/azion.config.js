@@ -1,10 +1,7 @@
 export default {
   build: {
-    builder: "esbuild",
     entry: "main.js",
-    preset: {
-      name: "javascript",
-    },
+    preset: "javascript",
     worker: true,
   },
   networkList: [

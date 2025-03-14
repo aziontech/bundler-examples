@@ -20,7 +20,5 @@
     }
   },
   "packageManager": "pnpm@7.5.0",
-  "dependencies": {
-    "azion": "latest"
-  }
+  "dependencies": {}
 }
