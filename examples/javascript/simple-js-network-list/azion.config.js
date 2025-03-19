@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   build: {
     preset: "javascript",
   },
