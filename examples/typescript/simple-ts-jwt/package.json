@@ -2,7 +2,7 @@
   "name": "simple-ts-jwt",
   "version": "1.0.0",
   "description": "",
-  "main": "main.ts",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,7 @@
   "keywords": [],
   "author": "aziontech",
   "license": "ISC",
-  "dependencies": {
-    "azion": "latest"
-  },
+  "dependencies": {},
   "devDependencies": {
     "typescript": "^5.4.2"
   }

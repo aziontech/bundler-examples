@@ -1,8 +1,6 @@
 module.exports = {
   build: {
-    preset: {
-      name: "javascript",
-    },
+    preset: "javascript",
     memoryFS: {
       injectionDirs: ["files/"],
       removePathPrefix: "files/",

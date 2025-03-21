@@ -1,4 +1,4 @@
-import getMessages from "./messages.js";
+import getMessages from "./messages";
 
 function getRandomMessage(messages: string[]): string {
   const randomIndex: number = Math.floor(Math.random() * messages.length);
@@ -17,6 +17,6 @@ const main = (event: any) => {
     headers: new Headers([["X-Custom-Feat", "my random message"]]),
     status: 200,
   });
-}
+};
 
 export default main;
