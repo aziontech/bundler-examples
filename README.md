@@ -3,6 +3,7 @@
 </p>
 
 # Azion Bundler - Examples 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 [![Maintainers](https://img.shields.io/badge/maintainers-jotanarciso,%20jcbsfilho,%20pablodiehl-blue.svg)](https://github.com/aziontech/bundler-examples/graphs/contributors)
 
 **Repository used for [Azion Bundler](https://github.com/aziontech/bundler) E2E tests.**
