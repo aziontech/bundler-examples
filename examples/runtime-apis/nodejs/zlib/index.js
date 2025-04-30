@@ -16,8 +16,6 @@ import zlib from "node:zlib";
  * @returns {Promise<Response>}
  */
 const main = async (event) => {
-  const codes = zlib.constants;
-
   try {
     const { gzipSync } = zlib;
     const input = "Hello, world!";
@@ -27,11 +25,7 @@ const main = async (event) => {
     // [Error: [unenv] zlib.gzipSync is not implemented yet!]
   }
 
-  return new Response(JSON.stringify(codes), {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  return new Response("Done!");
 };
 
 export default main;
