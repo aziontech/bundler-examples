@@ -5,7 +5,7 @@
  * @module runtime-apis/nodejs/os/main
  * @example
  * // Execute with Azion Bundler:
- * npx edge-functions build
+ * npx edge-functions build --entry index.js
  * npx edge-functions dev
  */
 import os from "node:os";

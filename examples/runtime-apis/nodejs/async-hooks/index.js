@@ -5,7 +5,7 @@
  * @module runtime-apis/nodejs/async-hooks/main
  * @example
  * // Execute with Azion Bundler:
- * npx edge-functions build
+ * npx edge-functions build --entry index.js
  * npx edge-functions dev
  */
 import { AsyncLocalStorage } from "node:async_hooks";
@@ -36,7 +36,7 @@ async function main(event) {
   return requestId.run(id, () => {
     doSomething();
     logAsyncContext("log from another sync function");
-    return new Response("ok");
+    return new Response("Done!", { status: 200 });
   });
 }
 

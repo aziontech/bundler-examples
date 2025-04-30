@@ -5,7 +5,7 @@
  * @module runtime-apis/nodejs/timers/main
  * @example
  * // Execute with Azion Bundler:
- * npx edge-functions build
+ * npx edge-functions build --entry index.js
  *
  */
 import timers from "node:timers";
