@@ -14,23 +14,27 @@
 
 module.exports = {
   build: {
-    preset: "javascript",
-    entry: "./index.js",
-    bundler: "esbuild",
+    preset: 'javascript',
+    entry: ['index.js'],
+    bundler: 'esbuild',
     polyfills: false,
-    worker: true,
+    worker: true
   },
+  functions: [
+    {
+      name: 'my-javascript-function',
+      path: '.edge/worker'
+    }
+  ],
   rules: {
     request: [
       {
-        name: "Execute Edge Function",
-        match: "^\\/",
+        name: 'Execute Edge Function',
+        match: '^\\/',
         behavior: {
-          runFunction: {
-            path: ".edge/worker.js",
-          },
-        },
-      },
-    ],
-  },
-};
+          runFunction: 'my-javascript-function'
+        }
+      }
+    ]
+  }
+}
