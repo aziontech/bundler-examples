@@ -7,10 +7,10 @@
  * @module runtime-apis/nodejs/crypto/main
  * @example
  * // Execute with Azion Bundler:
- * npx edge-functions build
+ * npx edge-functions build --entry index.js
  * npx edge-functions dev
  */
-import { createHmac, randomUUID } from "node:crypto";
+import crypto from "node:crypto";
 
 /**
  * Example of using the Node.js Crypto API
@@ -18,17 +18,13 @@ import { createHmac, randomUUID } from "node:crypto";
  * @returns
  */
 const main = async (event) => {
-  const hmac = createHmac("sha256", "a secret");
+  const hmac = crypto.createHmac("sha256", "a secret");
   hmac.update("Azion Edge Functions");
   const hmacResult = hmac.digest("hex");
   console.log(hmacResult);
-  // 5f2f3c2b9
+  // 57c4ef39b84510917c1f1d98b43e474c2741ebf063369abea9b705f24ed2259a
 
-  const uuid = randomUUID();
-  console.log(uuid);
-  // 1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4c1e
-
-  return new Response(uuid, { status: 200 });
+  return new Response("Done!", { status: 200 });
 };
 
 export default main;

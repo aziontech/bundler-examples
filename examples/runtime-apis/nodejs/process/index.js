@@ -6,7 +6,7 @@
  * @module runtime-apis/nodejs/process/main
  * @example
  * // Execute with Azion Bundler:
- * npx edge-functions build
+ * npx edge-functions build --entry index.js
  * npx edge-functions dev
  */
 import { env, nextTick } from "node:process";

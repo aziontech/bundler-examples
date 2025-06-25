@@ -1,11 +1,11 @@
 /**
  * An Example of using the Node.js HTTP API in a Azion Edge Function.
  * Support:
- * - Extended by library `stream-http`
+ * - Partial support by library `unenv`
  * @module runtime-apis/nodejs/http/main
  * @example
  * // Execute with Azion Bundler:
- * npx edge-functions build
+ * npx edge-functions build --entry index.js
  * npx edge-functions dev
  */
 import http from "node:http";
@@ -21,7 +21,7 @@ const main = async (event) => {
   globalThis.location = {
     protocol,
   };
-  return new Promise((resolve, reject) => {
+  try {
     http
       .request("https://jsonplaceholder.typicode.com/todos/1", (res) => {
         console.log("Got response: " + res.statusCode);
@@ -43,7 +43,11 @@ const main = async (event) => {
         });
       })
       .end();
-  });
+  } catch (error) {
+    // [unenv] http.request is not implemented yet!
+    console.error("Error: ", error);
+    return new Response("Done!", { status: 200 });
+  }
 };
 
 export default main;

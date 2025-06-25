@@ -1,11 +1,11 @@
 /**
  * An Example of using Node.js Zlib API in a Azion Edge Function.
  * Support:
- * - Partially supported (Extended by library `browserify-zlib`)
+ * - Partially supported (Extended by library `unenv`)
  * @module runtime-apis/nodejs/zlib/main
  * @example
  * // Execute with Azion Bundler:
- * npx edge-functions build
+ * npx edge-functions build --entry index.js
  *
  */
 import zlib from "node:zlib";
@@ -16,19 +16,16 @@ import zlib from "node:zlib";
  * @returns {Promise<Response>}
  */
 const main = async (event) => {
-  const body = event.body ?? "Hello, World!";
-  const output = zlib.gzipSync(body);
+  try {
+    const { gzipSync } = zlib;
+    const input = "Hello, world!";
+    gzipSync(input);
+  } catch (error) {
+    console.log("Error:", error);
+    // [Error: [unenv] zlib.gzipSync is not implemented yet!]
+  }
 
-  // decode
-  const decom = zlib.gunzipSync(Buffer.from(output)).toString();
-  console.log(decom);
-
-  return new Response(output.toString("base64"), {
-    headers: {
-      "Content-Type": "application/octet-stream",
-      "Content-Encoding": "gzip",
-    },
-  });
+  return new Response("Done!");
 };
 
 export default main;
