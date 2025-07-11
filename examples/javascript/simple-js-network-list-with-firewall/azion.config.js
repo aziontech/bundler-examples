@@ -1,6 +1,6 @@
 export default {
   build: {
-    entry: "main.js",
+    entry: ["main.js"],
     preset: "javascript",
     worker: true,
   },
