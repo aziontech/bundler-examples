@@ -1,0 +1,20 @@
+# node
+**/node_modules
+
+# azion
+**/.edge
+**/azion
+**/azion1
+
+# Next.js
+**/.next
+**/.vercel
+
+# Angular
+**/dist
+**/.angular
+
+# Opennextjs
+**/.open-next
+
+

@@ -19,17 +19,21 @@
 
 module.exports = {
   build: {
+    entry: ["main.js"],
     preset: "javascript",
     polyfills: true,
-    memoryFS: {
-      injectionDirs: ["files/"],
-      removePathPrefix: "files/",
-    },
   },
+  networkList: [
+    {
+      name: "$NETWORK_LIST_NAME",
+      type: "ip_cidr",
+      items: ["127.0.0.0/8"],
+    },
+  ],
   edgeFunctions: [
     {
       name: "$EDGE_FUNCTION_NAME",
-      path: "./functions/index.js",
+      path: "./functions/main.js",
     },
   ],
   edgeApplications: [

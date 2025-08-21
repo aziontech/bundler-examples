@@ -19,19 +19,15 @@
 
 module.exports = {
   build: {
-    preset: "next",
+    preset: "html",
     polyfills: true,
-    memoryFS: {
-      injectionDirs: ["data"],
-      removePathPrefix: "",
-    },
   },
   edgeStorage: [
     {
       name: "$BUCKET_NAME",
-      dir: ".edge/next-build-assets",
-      edgeAccess: "read_only",
       prefix: "$BUCKET_PREFIX",
+      dir: "./www",
+      edgeAccess: "read_only",
     },
   ],
   edgeConnectors: [
@@ -45,52 +41,14 @@ module.exports = {
       },
     },
   ],
-  edgeFunctions: [
-    {
-      name: "$EDGE_FUNCTION_NAME",
-      path: "./functions/handler.js",
-      bindings: {
-        storage: {
-          bucket: "$BUCKET_NAME",
-          prefix: "$BUCKET_PREFIX",
-        },
-      },
-    },
-  ],
   edgeApplications: [
     {
       name: "$EDGE_APPLICATION_NAME",
       rules: {
         request: [
           {
-            name: "Next.js Static Assets",
-            description: "Serve Next.js static assets through edge connector",
-            active: true,
-            criteria: [
-              [
-                {
-                  variable: "${uri}",
-                  conditional: "if",
-                  operator: "matches",
-                  argument: "^/_next/static/",
-                },
-              ],
-            ],
-            behaviors: [
-              {
-                type: "set_edge_connector",
-                attributes: {
-                  value: "$EDGE_CONNECTOR_NAME",
-                },
-              },
-              {
-                type: "deliver",
-              },
-            ],
-          },
-          {
             name: "Deliver Static Assets",
-            description: "Serve static assets through edge connector",
+            description: "Deliver static assets directly from edge storage",
             active: true,
             criteria: [
               [
@@ -99,7 +57,7 @@ module.exports = {
                   conditional: "if",
                   operator: "matches",
                   argument:
-                    ".(css|js|ttf|woff|woff2|pdf|svg|jpg|jpeg|gif|bmp|png|ico|mp4|json|xml|html)$",
+                    "\\.(jpg|jpeg|png|gif|bmp|webp|svg|ico|ttf|otf|woff|woff2|eot|pdf|doc|docx|xls|xlsx|ppt|pptx|mp4|webm|mp3|wav|ogg|css|js|json|xml|html|txt|csv|zip|rar|7z|tar|gz|webmanifest|map|md|yaml|yml)$",
                 },
               ],
             ],
@@ -116,8 +74,8 @@ module.exports = {
             ],
           },
           {
-            name: "Execute Next.js Function",
-            description: "Execute Next.js edge function for all requests",
+            name: "Redirect to index.html",
+            description: "Handle directory requests by rewriting to index.html",
             active: true,
             criteria: [
               [
@@ -125,33 +83,57 @@ module.exports = {
                   variable: "${uri}",
                   conditional: "if",
                   operator: "matches",
-                  argument: "^/",
+                  argument: ".*/$",
                 },
               ],
             ],
             behaviors: [
               {
-                type: "run_function",
+                type: "set_edge_connector",
                 attributes: {
-                  value: "$EDGE_FUNCTION_NAME",
+                  value: "$EDGE_CONNECTOR_NAME",
                 },
               },
               {
-                type: "forward_cookies",
+                type: "rewrite_request",
+                attributes: {
+                  value: "${uri}index.html",
+                },
+              },
+            ],
+          },
+          {
+            name: "Redirect to index.html for Subpaths",
+            description: "Handle subpath requests by rewriting to index.html",
+            active: true,
+            criteria: [
+              [
+                {
+                  variable: "${uri}",
+                  conditional: "if",
+                  operator: "matches",
+                  argument: "^(?!.*\\/$)(?![\\s\\S]*\\.[a-zA-Z0-9]+$).*",
+                },
+              ],
+            ],
+            behaviors: [
+              {
+                type: "set_edge_connector",
+                attributes: {
+                  value: "$EDGE_CONNECTOR_NAME",
+                },
+              },
+              {
+                type: "rewrite_request",
+                attributes: {
+                  value: "${uri}/index.html",
+                },
               },
             ],
           },
         ],
+        response: [],
       },
-      functionsInstances: [
-        {
-          name: "$EDGE_FUNCTION_INSTANCE_NAME",
-          ref: "$EDGE_FUNCTION_NAME",
-          args: {
-            environment: "production",
-          },
-        },
-      ],
     },
   ],
   workloads: [
