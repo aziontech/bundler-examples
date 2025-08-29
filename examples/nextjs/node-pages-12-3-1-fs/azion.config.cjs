@@ -26,7 +26,7 @@ module.exports = {
       removePathPrefix: "",
     },
   },
-  edgeStorage: [
+  storage: [
     {
       name: "$BUCKET_NAME",
       dir: ".edge/next-build-assets",
@@ -34,20 +34,20 @@ module.exports = {
       prefix: "$BUCKET_PREFIX",
     },
   ],
-  edgeConnectors: [
+  connectors: [
     {
-      name: "$EDGE_CONNECTOR_NAME",
+      name: "$CONNECTOR_NAME",
       active: true,
-      type: "edge_storage",
+      type: "storage",
       attributes: {
         bucket: "$BUCKET_NAME",
         prefix: "$BUCKET_PREFIX",
       },
     },
   ],
-  edgeFunctions: [
+  functions: [
     {
-      name: "$EDGE_FUNCTION_NAME",
+      name: "$FUNCTION_NAME",
       path: "./functions/handler.js",
       bindings: {
         storage: {
@@ -57,14 +57,14 @@ module.exports = {
       },
     },
   ],
-  edgeApplications: [
+  applications: [
     {
-      name: "$EDGE_APPLICATION_NAME",
+      name: "$APPLICATION_NAME",
       rules: {
         request: [
           {
             name: "Next.js Static Assets",
-            description: "Serve Next.js static assets through edge connector",
+            description: "Serve Next.js static assets through connector",
             active: true,
             criteria: [
               [
@@ -78,9 +78,9 @@ module.exports = {
             ],
             behaviors: [
               {
-                type: "set_edge_connector",
+                type: "set_connector",
                 attributes: {
-                  value: "$EDGE_CONNECTOR_NAME",
+                  value: "$CONNECTOR_NAME",
                 },
               },
               {
@@ -90,7 +90,7 @@ module.exports = {
           },
           {
             name: "Deliver Static Assets",
-            description: "Serve static assets through edge connector",
+            description: "Serve static assets through connector",
             active: true,
             criteria: [
               [
@@ -105,9 +105,9 @@ module.exports = {
             ],
             behaviors: [
               {
-                type: "set_edge_connector",
+                type: "set_connector",
                 attributes: {
-                  value: "$EDGE_CONNECTOR_NAME",
+                  value: "$CONNECTOR_NAME",
                 },
               },
               {
@@ -117,7 +117,7 @@ module.exports = {
           },
           {
             name: "Execute Next.js Function",
-            description: "Execute Next.js edge function for all requests",
+            description: "Execute Next.js function for all requests",
             active: true,
             criteria: [
               [
@@ -133,7 +133,7 @@ module.exports = {
               {
                 type: "run_function",
                 attributes: {
-                  value: "$EDGE_FUNCTION_NAME",
+                  value: "$FUNCTION_NAME",
                 },
               },
               {
@@ -145,11 +145,9 @@ module.exports = {
       },
       functionsInstances: [
         {
-          name: "$EDGE_FUNCTION_INSTANCE_NAME",
-          ref: "$EDGE_FUNCTION_NAME",
-          args: {
-            environment: "production",
-          },
+          name: "$FUNCTION_INSTANCE_NAME",
+          ref: "$FUNCTION_NAME",
+          args: {},
         },
       ],
     },
@@ -175,7 +173,7 @@ module.exports = {
           strategy: {
             type: "default",
             attributes: {
-              edgeApplication: "$EDGE_APPLICATION_NAME",
+              application: "$APPLICATION_NAME",
             },
           },
         },
