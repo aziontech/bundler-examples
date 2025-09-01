@@ -22,7 +22,7 @@ module.exports = {
     preset: "html",
     polyfills: true,
   },
-  edgeStorage: [
+  storage: [
     {
       name: "$BUCKET_NAME",
       prefix: "$BUCKET_PREFIX",
@@ -30,25 +30,25 @@ module.exports = {
       edgeAccess: "read_only",
     },
   ],
-  edgeConnectors: [
+  connectors: [
     {
-      name: "$EDGE_CONNECTOR_NAME",
+      name: "$CONNECTOR_NAME",
       active: true,
-      type: "edge_storage",
+      type: "storage",
       attributes: {
         bucket: "$BUCKET_NAME",
         prefix: "$BUCKET_PREFIX",
       },
     },
   ],
-  edgeApplications: [
+  applications: [
     {
-      name: "$EDGE_APPLICATION_NAME",
+      name: "$APPLICATION_NAME",
       rules: {
         request: [
           {
             name: "Deliver Static Assets",
-            description: "Deliver static assets directly from edge storage",
+            description: "Deliver static assets directly from storage",
             active: true,
             criteria: [
               [
@@ -63,9 +63,9 @@ module.exports = {
             ],
             behaviors: [
               {
-                type: "set_edge_connector",
+                type: "set_connector",
                 attributes: {
-                  value: "$EDGE_CONNECTOR_NAME",
+                  value: "$CONNECTOR_NAME",
                 },
               },
               {
@@ -89,9 +89,9 @@ module.exports = {
             ],
             behaviors: [
               {
-                type: "set_edge_connector",
+                type: "set_connector",
                 attributes: {
-                  value: "$EDGE_CONNECTOR_NAME",
+                  value: "$CONNECTOR_NAME",
                 },
               },
               {
@@ -118,9 +118,9 @@ module.exports = {
             ],
             behaviors: [
               {
-                type: "set_edge_connector",
+                type: "set_connector",
                 attributes: {
-                  value: "$EDGE_CONNECTOR_NAME",
+                  value: "$CONNECTOR_NAME",
                 },
               },
               {
@@ -157,7 +157,7 @@ module.exports = {
           strategy: {
             type: "default",
             attributes: {
-              edgeApplication: "$EDGE_APPLICATION_NAME",
+              application: "$APPLICATION_NAME",
             },
           },
         },
