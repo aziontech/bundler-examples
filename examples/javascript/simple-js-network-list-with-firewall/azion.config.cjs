@@ -19,8 +19,8 @@
 
 module.exports = {
   build: {
-    entry: ["main.js"],
     preset: "javascript",
+    entry: ["main.js"],
     polyfills: true,
   },
   networkList: [

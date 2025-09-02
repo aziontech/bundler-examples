@@ -19,7 +19,6 @@
 
 module.exports = {
   build: {
-    entry: ["index.js"],
     preset: "javascript",
     polyfills: true,
   },
@@ -30,20 +29,20 @@ module.exports = {
       items: ["127.0.0.0/8", "10.0.0.1"],
     },
   ],
-  edgeFunctions: [
+  functions: [
     {
-      name: "$EDGE_FUNCTION_NAME",
+      name: "$FUNCTION_NAME",
       path: "./functions/index.js",
     },
   ],
-  edgeApplications: [
+  applications: [
     {
-      name: "$EDGE_APPLICATION_NAME",
+      name: "$APPLICATION_NAME",
       rules: {
         request: [
           {
-            name: "Execute Edge Function",
-            description: "Execute edge function for all requests",
+            name: "Execute Function",
+            description: "Execute function for all requests",
             active: true,
             criteria: [
               [
@@ -59,7 +58,7 @@ module.exports = {
               {
                 type: "run_function",
                 attributes: {
-                  value: "$EDGE_FUNCTION_NAME",
+                  value: "$FUNCTION_NAME",
                 },
               },
             ],
@@ -68,11 +67,8 @@ module.exports = {
       },
       functionsInstances: [
         {
-          name: "$EDGE_FUNCTION_INSTANCE_NAME",
-          ref: "$EDGE_FUNCTION_NAME",
-          args: {
-            environment: "production",
-          },
+          name: "$FUNCTION_INSTANCE_NAME",
+          ref: "$FUNCTION_NAME",
         },
       ],
     },
@@ -98,7 +94,7 @@ module.exports = {
           strategy: {
             type: "default",
             attributes: {
-              edgeApplication: "$EDGE_APPLICATION_NAME",
+              application: "$APPLICATION_NAME",
             },
           },
         },
