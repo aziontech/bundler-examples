@@ -28,7 +28,7 @@ module.exports = {
   },
   functions: [
     {
-      name: "$EDGE_FUNCTION_NAME",
+      name: "$FUNCTION_NAME",
       path: "./functions/index.js",
     },
   ],
