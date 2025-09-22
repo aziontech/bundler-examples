@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "name": "Shadow Stride Shoes",
+    "slug": "shadowStrideShoes",
+    "images": [
+      "https://demo.yournextstore.com/_next/image?url=https%3A%2F%2Ffpvnqhp6jqce9ax6.public.blob.vercel-storage.com%2Fimages%2F0196b1e1-bdf7-72bb-b729-1135a2543d54%2Ftest%2FMDB8YWNjdF8xT3BaeG5GSmNWbVh6bURsfGZsX3Rlc3RfUnYydHRDRUNnb2dxSVhiOEtueEw4NGhk00gGycRyUx-oA5kIVgdS3KV66mv5BGQ9QcWFneSw2.avif&w=750&q=75"
+    ],
+    "price": 100,
+    "currency": "USD",
+    "description": "Shadow Stride Shoes with a modern and lightweight design, perfect for urban runs and high-performance training.",
+    "discountPercentage": 30
+  },
+  {
+    "id": "2",
+    "name": "Horizon Gaze Sunglasses",
+    "slug": "horizonGazeSunglasses",
+    "images": [
+      "https://demo.yournextstore.com/_next/image?url=https%3A%2F%2Ffpvnqhp6jqce9ax6.public.blob.vercel-storage.com%2Fimages%2F0196b1e1-bdf7-72bb-b729-1135a2543d54%2Ftest%2F68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a644638785433426165473547536d4e57625668366255527366475a735833526c63335266546a597a636b645a61474a7a5a6c566c57466c6f62324578656d5177515568333030374f594653664848-eMKW-XSgVxDNQ4GApJh0MEx6tKOlhU5e79B.avif&w=580&q=75"
+    ],
+    "price": 50,
+    "currency": "USD",
+    "description": "Horizon Gaze Sunglasses with UV400 protection and polarized lenses, ideal for sunny days and a casual look."
+  },
+  {
+    "id": "3",
+    "name": "Zebra Blend T-Shirt",
+    "slug": "zebraBlendTShirt",
+    "images": [
+      "https://demo.yournextstore.com/_next/image?url=https%3A%2F%2Ffpvnqhp6jqce9ax6.public.blob.vercel-storage.com%2Fimages%2F0196b1e1-bdf7-72bb-b729-1135a2543d54%2Ftest%2FDefault_product_image_of_a_tshirt_for_ecommerce_website_minim_3%2520%25281%2529-JHMZe8xJ28tll9bGQINl0AXFfYByFc.jpg&w=580&q=75"
+    ],
+    "price": 45,
+    "currency": "USD",
+    "description": "Zebra Blend T-Shirt made of premium cotton, featuring a minimalist black and white striped design for everyday comfort."
+  },
+  {
+    "id": "4",
+    "name": "Aqua Stride Bottle",
+    "slug": "aquaStrideBottle",
+    "images": [
+      "https://demo.yournextstore.com/_next/image?url=https%3A%2F%2Ffpvnqhp6jqce9ax6.public.blob.vercel-storage.com%2Fimages%2F0196b1e1-bdf7-72bb-b729-1135a2543d54%2Ftest%2FDefault_product_image_of_a_bottle_for_ecommerce_website_minim_2-GOjCmiuwEPPLwzFxtjnHCNSJ7Zy5Ut.jpg&w=1920&q=75"
+    ],
+    "price": 99,
+    "currency": "USD",
+    "description": "Aqua Stride Bottle with a modern and lightweight design, perfect for urban runs and high-performance training."
+  }
+]
