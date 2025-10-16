@@ -1,0 +1,22 @@
+{
+  "name": "nuxt-ssr",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^3.17.5",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "azion": "~2.2.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@types/node": "^24.7.1"
+  }
+}
