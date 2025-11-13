@@ -1,0 +1,8 @@
+node_modules
+.edge/
+.vulcan
+.open-next
+!.env.example
+.env
+.DS_Store
+build
