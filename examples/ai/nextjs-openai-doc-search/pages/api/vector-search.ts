@@ -1,29 +1,27 @@
-import type { NextRequest } from 'next/server'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from '@supabase/supabase-js'
 import { codeBlock, oneLine } from 'common-tags'
 import GPT3Tokenizer from 'gpt3-tokenizer'
-import {
-  Configuration,
-  OpenAIApi,
+import { 
+  Configuration, 
+  OpenAIApi, 
   CreateModerationResponse,
   CreateEmbeddingResponse,
   ChatCompletionRequestMessage,
-} from 'openai-edge'
-import { OpenAIStream, StreamingTextResponse } from 'ai'
+  CreateChatCompletionResponse
+} from 'openai'
 import { ApplicationError, UserError } from '@/lib/errors'
 
 const openAiKey = process.env.OPENAI_KEY
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
-const config = new Configuration({
+const configuration = new Configuration({
   apiKey: openAiKey,
 })
-const openai = new OpenAIApi(config)
+const openai = new OpenAIApi(configuration)
 
-export const runtime = 'edge'
-
-export default async function handler(req: NextRequest) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (!openAiKey) {
       throw new ApplicationError('Missing environment variable OPENAI_KEY')
@@ -37,7 +35,7 @@ export default async function handler(req: NextRequest) {
       throw new ApplicationError('Missing environment variable SUPABASE_SERVICE_ROLE_KEY')
     }
 
-    const requestData = await req.json()
+    const requestData = req.body
 
     if (!requestData) {
       throw new UserError('Missing request data')
@@ -53,11 +51,12 @@ export default async function handler(req: NextRequest) {
 
     // Moderate the content to comply with OpenAI T&C
     const sanitizedQuery = query.trim()
-    const moderationResponse: CreateModerationResponse = await openai
-      .createModeration({ input: sanitizedQuery })
-      .then((res) => res.json())
+    const moderationResponse = await openai.createModeration({ 
+      input: sanitizedQuery 
+    })
+    const moderationData: CreateModerationResponse = moderationResponse.data
 
-    const [results] = moderationResponse.results
+    const [results] = moderationData.results
 
     if (results.flagged) {
       throw new UserError('Flagged content', {
@@ -76,9 +75,10 @@ export default async function handler(req: NextRequest) {
       throw new ApplicationError('Failed to create embedding for question', embeddingResponse)
     }
 
+    const embeddingData: CreateEmbeddingResponse = embeddingResponse.data
     const {
       data: [{ embedding }],
-    }: CreateEmbeddingResponse = await embeddingResponse.json()
+    } = embeddingData
 
     const { error: matchError, data: pageSections } = await supabaseClient.rpc(
       'match_page_sections',
@@ -141,31 +141,23 @@ export default async function handler(req: NextRequest) {
       messages: [chatMessage],
       max_tokens: 512,
       temperature: 0,
-      stream: true,
+      stream: false,
     })
 
-    if (!response.ok) {
-      const error = await response.json()
-      throw new ApplicationError('Failed to generate completion', error)
+    if (response.status !== 200) {
+      throw new ApplicationError('Failed to generate completion', response.data)
     }
 
-    // Transform the response into a readable stream
-    const stream = OpenAIStream(response)
+    const completionData: CreateChatCompletionResponse = response.data
+    const answer = completionData.choices[0]?.message?.content || 'No answer generated'
 
-    // Return a StreamingTextResponse, which can be consumed by the client
-    return new StreamingTextResponse(stream)
+    return res.status(200).send(answer)
   } catch (err: unknown) {
     if (err instanceof UserError) {
-      return new Response(
-        JSON.stringify({
-          error: err.message,
-          data: err.data,
-        }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
+      return res.status(400).json({
+        error: err.message,
+        data: err.data,
+      })
     } else if (err instanceof ApplicationError) {
       // Print out application errors with their additional data
       console.error(`${err.message}: ${JSON.stringify(err.data)}`)
@@ -175,14 +167,8 @@ export default async function handler(req: NextRequest) {
     }
 
     // TODO: include more response info in debug environments
-    return new Response(
-      JSON.stringify({
-        error: 'There was an error processing your request',
-      }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
+    return res.status(500).json({
+      error: 'There was an error processing your request',
+    })
   }
 }
