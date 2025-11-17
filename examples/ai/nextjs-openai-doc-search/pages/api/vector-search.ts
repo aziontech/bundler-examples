@@ -2,9 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from '@supabase/supabase-js'
 import { codeBlock, oneLine } from 'common-tags'
 import GPT3Tokenizer from 'gpt3-tokenizer'
-import { 
-  Configuration, 
-  OpenAIApi, 
+import {
+  Configuration,
+  OpenAIApi,
   CreateModerationResponse,
   CreateEmbeddingResponse,
   ChatCompletionRequestMessage,
@@ -51,8 +51,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Moderate the content to comply with OpenAI T&C
     const sanitizedQuery = query.trim()
-    const moderationResponse = await openai.createModeration({ 
-      input: sanitizedQuery 
+    const moderationResponse = await openai.createModeration({
+      input: sanitizedQuery
     })
     const moderationData: CreateModerationResponse = moderationResponse.data
 
