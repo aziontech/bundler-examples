@@ -50,7 +50,7 @@
     "ai": "^5.0.93",
     "azion": "1.20.1",
     "classnames": "2.5.1",
-    "next": "14.1.0",
+    "next": "14.2.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^10.1.0",
