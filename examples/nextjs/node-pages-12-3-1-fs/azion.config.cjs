@@ -30,7 +30,7 @@ module.exports = {
     {
       name: "$BUCKET_NAME",
       dir: ".edge/next-build-assets",
-      edgeAccess: "read_only",
+      workloadsAccess: "read_only",
       prefix: "$BUCKET_PREFIX",
     },
   ],

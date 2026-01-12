@@ -27,7 +27,7 @@ module.exports = {
       name: "$BUCKET_NAME",
       prefix: "$BUCKET_PREFIX",
       dir: "./www",
-      edgeAccess: "read_only",
+      workloadsAccess: "read_only",
     },
   ],
   connectors: [
