@@ -2331,10 +2331,10 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hono@4.6.9:
-  version "4.6.9"
-  resolved "https://registry.yarnpkg.com/hono/-/hono-4.6.9.tgz#4dbe1d90b69ab013cbd296ec8b02cfc107eae1e0"
-  integrity sha512-p/pN5yZLuZaHzyAOT2nw2/Ud6HhJHYmDNGH6Ck1OWBhPMVeM1r74jbCRwNi0gyFRjjbsGgoHbOyj7mT1PDNbTw==
+hono@4.11.4:
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/hono/-/hono-4.11.4.tgz#0c1ba7175e08624932224bc7644e4cb22b294080"
+  integrity sha512-U7tt8JsyrxSRKspfhtLET79pU8K+tInj5QZXs1jSugO1Vq5dFj3kmZsRldo29mTBfcjDRVRXrEZ6LS63Cog9ZA==
 
 ieee754@^1.2.1:
   version "1.2.1"
