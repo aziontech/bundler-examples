@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   modules: ["@nuxtjs/tailwindcss"],
   nitro: {
-    preset: require.resolve("azion/preset/nuxt/ssr"),
+    preset: require.resolve("@aziontech/presets/nuxt/ssr"),
     prerender: {
       routes: ["/"],
     },

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { getCookie, setCookie } from "azion/cookies";
+import { getCookie, setCookie } from "@aziontech/cookies";
 
 export default async function main(event) {
   const cookieKey = "auth";

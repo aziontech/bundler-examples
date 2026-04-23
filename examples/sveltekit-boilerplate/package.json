@@ -21,7 +21,7 @@
     "@playwright/test": "^1.57.0",
     "@sveltejs/kit": "^2.49.3",
     "@sveltejs/vite-plugin-svelte": "^6.2.3",
-    "azion": "latest",
+    "@aziontech/presets": "latest",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.13.1",
