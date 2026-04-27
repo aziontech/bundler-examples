@@ -1,4 +1,4 @@
-import adapter from '@aziontech/presets/preset/sveltekit/ssr';
+import adapter from '@aziontech/presets/sveltekit';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
