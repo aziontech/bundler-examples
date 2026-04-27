@@ -3,10 +3,10 @@
  *
  * For better type checking and IntelliSense:
  * 1. Install azion as dev dependency:
- *    npm install -D azion
+ *    npm install -D @aziontech/config
  *
  * 2. Use defineConfig:
- *    import { defineConfig } from 'azion'
+ *    import { defineConfig } from '@aziontech/config'
  *
  * 3. Replace the configuration with defineConfig:
  *    export default defineConfig({
