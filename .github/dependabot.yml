@@ -14,9 +14,10 @@ updates:
       actions:
         patterns: ['*']
 
-  # Example apps are demo boilerplates, not shipped artifacts: monthly,
-  # grouped into one PR per example, with a low open-PR ceiling to keep
-  # the queue readable.
+  # Example apps are demo boilerplates, not shipped artifacts. Declared so
+  # the ecosystem is covered and Dependabot *alerts* apply, but version-update
+  # PRs are switched off (limit 0) to keep the public PR queue quiet — bump
+  # them by hand from the private alert when something real lands.
   - package-ecosystem: 'npm'
     directories:
       - '/examples/*'
