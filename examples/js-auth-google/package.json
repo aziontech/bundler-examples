@@ -11,7 +11,7 @@
   "author": "aziontech",
   "license": "ISC",
   "dependencies": {
-    "itty-router": "^5.0.17",
+    "itty-router": "^5.0.24",
     "next-auth": "5.0.0-beta.18"
   }
 }

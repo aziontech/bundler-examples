@@ -10,13 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "nuxt": "^3.17.5",
+    "nuxt": "^4.5.1",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@aziontech/presets": "latest",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "@types/node": "^24.7.1"
+    "@types/node": "^26.1.1"
   }
 }
