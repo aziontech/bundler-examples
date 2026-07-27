@@ -15,8 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      # read-only scopes Scorecard needs to evaluate individual checks;
+      # without them the checks below silently score 0 / inconclusive
+      actions: read # Dangerous-Workflow, Token-Permissions
+      checks: read # CI-Tests
+      issues: read # Maintained
+      pull-requests: read # Code-Review, Maintained
     env:
       THRESHOLD: '8'
+      # warn until SCORECARD_TOKEN (classic PAT, repo scope) exists and branch
+      # protection is on: Branch-Protection is unreadable via GITHUB_TOKEN, so
+      # enforce would block every PR on a score the repo cannot reach.
       MODE: 'warn'
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0

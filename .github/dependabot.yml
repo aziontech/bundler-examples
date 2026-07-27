@@ -1,0 +1,37 @@
+version: 2
+
+updates:
+  # Keeps `uses:` SHAs current so Pinned-Dependencies stays green without
+  # the pins going stale.
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    # Wait a week before proposing a freshly published version, so a
+    # compromised release has time to be pulled before we pin to it.
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: 'chore'
+    groups:
+      actions:
+        patterns: ['*']
+
+  # Example apps are demo boilerplates, not shipped artifacts. Declared so
+  # the ecosystem is covered and Dependabot *alerts* apply, but version-update
+  # PRs are switched off (limit 0) to keep the public PR queue quiet — bump
+  # them by hand from the private alert when something real lands.
+  - package-ecosystem: 'npm'
+    directories:
+      - '/examples/*'
+    schedule:
+      interval: 'monthly'
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 0
+    commit-message:
+      prefix: 'chore'
+    groups:
+      dependencies:
+        patterns: ['*']

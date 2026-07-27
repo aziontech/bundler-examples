@@ -17,4 +17,5 @@
 # Opennextjs
 **/.open-next
 
-
+# misc
+.mcp.json
