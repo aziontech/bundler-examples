@@ -1,0 +1,30 @@
+version: 2
+
+updates:
+  # Keeps `uses:` SHAs current so Pinned-Dependencies stays green without
+  # the pins going stale.
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    commit-message:
+      prefix: 'chore'
+    groups:
+      actions:
+        patterns: ['*']
+
+  # Example apps are demo boilerplates, not shipped artifacts: monthly,
+  # grouped into one PR per example, with a low open-PR ceiling to keep
+  # the queue readable.
+  - package-ecosystem: 'npm'
+    directories:
+      - '/examples/*'
+    schedule:
+      interval: 'monthly'
+    open-pull-requests-limit: 0
+    commit-message:
+      prefix: 'chore'
+    groups:
+      dependencies:
+        patterns: ['*']
