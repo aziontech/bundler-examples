@@ -1,3 +1,12 @@
 packages:
   - 'site'
   - 'packages/*'
+
+# Supply-chain hardening.
+# Wait seven days (in minutes) before installing a freshly published version,
+# so a compromised release has time to be pulled before we adopt it.
+minimumReleaseAge: 10080
+# Refuse resolutions that would downgrade an already-trusted package.
+trustPolicy: no-downgrade
+# Refuse transitive dependencies pulled from git/tarball/other exotic sources.
+blockExoticSubdeps: true

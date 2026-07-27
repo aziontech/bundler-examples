@@ -18,11 +18,18 @@ import crypto from "node:crypto";
  * @returns
  */
 const main = async (event) => {
-  const hmac = crypto.createHmac("sha256", "a secret");
+  // Never hardcode the HMAC key. Read it from the environment so the secret
+  // lives outside the bundle — configure HMAC_SECRET as an environment
+  // variable in your Azion application.
+  const hmacSecret = process.env.HMAC_SECRET;
+  if (!hmacSecret) {
+    return new Response("HMAC_SECRET is not configured.", { status: 500 });
+  }
+
+  const hmac = crypto.createHmac("sha256", hmacSecret);
   hmac.update("Azion Edge Functions");
   const hmacResult = hmac.digest("hex");
   console.log(hmacResult);
-  // 57c4ef39b84510917c1f1d98b43e474c2741ebf063369abea9b705f24ed2259a
 
   return new Response("Done!", { status: 200 });
 };

@@ -50,7 +50,7 @@ curl -X POST http://localhost:3333/login \
 The answer will be like:
 
 ```json
-{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMUB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDgwMTQ5OX0.ZN0T7VjxUD7rGT4QUTE0P-Id8mZH0tjAhqweScycOHE"}
+{"token":"<HEADER>.<PAYLOAD>.<SIGNATURE>"}
 ```
 
 To access a protected route execute the command:
