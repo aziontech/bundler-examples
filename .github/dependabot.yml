@@ -12,6 +12,7 @@ updates:
     # compromised release has time to be pulled before we pin to it.
     cooldown:
       default-days: 7
+    open-pull-requests-limit: 0
     commit-message:
       prefix: 'chore'
     groups:
