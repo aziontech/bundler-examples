@@ -23,10 +23,7 @@ jobs:
       pull-requests: read # Code-Review, Maintained
     env:
       THRESHOLD: '8'
-      # warn until SCORECARD_TOKEN (classic PAT, repo scope) exists and branch
-      # protection is on: Branch-Protection is unreadable via GITHUB_TOKEN, so
-      # enforce would block every PR on a score the repo cannot reach.
-      MODE: 'warn'
+      MODE: 'enforce'
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
