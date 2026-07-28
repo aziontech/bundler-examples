@@ -30,16 +30,29 @@
   "devDependencies": {
     "@builder.io/qwik": "^1.20.0",
     "@builder.io/qwik-city": "^1.20.0",
+    "@eslint/js": "10.0.1",
     "@types/eslint": "9.6.1",
-    "@types/node": "26.1.1",
+    "@types/node": "22.20.1",
     "@typescript-eslint/eslint-plugin": "8.65.0",
     "@typescript-eslint/parser": "8.65.0",
     "eslint": "10.8.0",
     "eslint-plugin-qwik": "^1.20.0",
+    "globals": "17.8.0",
     "prettier": "3.9.6",
-    "typescript": "7.0.2",
+    "typescript": "5.9.3",
     "undici": "*",
-    "vite": "8.1.5",
+    "vite": "7.3.6",
     "vite-tsconfig-paths": "^6.1.1"
+  },
+  "overrides": {
+    "sharp": "^0.35.3"
+  },
+  "resolutions": {
+    "sharp": "^0.35.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "sharp": "^0.35.3"
+    }
   }
 }
