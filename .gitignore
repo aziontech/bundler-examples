@@ -17,5 +17,13 @@
 # Opennextjs
 **/.open-next
 
+# Rust
+**/target
+
+# Ruby
+**/.bundle
+**/vendor/bundle
+
 # misc
 .mcp.json
+ossf_report.json
