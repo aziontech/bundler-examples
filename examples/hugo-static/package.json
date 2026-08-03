@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "hugo-bin": "^0.161.0"
+  },
+  "hugo-bin": {
+    "buildTags": "extended"
   }
 }

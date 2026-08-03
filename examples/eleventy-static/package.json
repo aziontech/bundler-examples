@@ -35,12 +35,26 @@
 		"@11ty/eleventy": "^3.1.6",
 		"@11ty/eleventy-img": "^6.0.4",
 		"@11ty/eleventy-navigation": "^1.0.5",
-		"@11ty/eleventy-plugin-bundle": "^4.0.2",
+		"@11ty/eleventy-plugin-bundle": "^3.0.7",
 		"@11ty/eleventy-plugin-rss": "^3.0.0",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
 		"luxon": "^3.7.2",
 		"markdown-it-anchor": "^9.2.1",
 		"prismjs": "^1.30.0"
 	},
-	"dependencies": {}
+	"dependencies": {},
+	"overrides": {
+		"sharp": ">=0.35.0",
+		"brace-expansion": ">=5.0.8"
+	},
+	"resolutions": {
+		"sharp": ">=0.35.0",
+		"brace-expansion": ">=5.0.8"
+	},
+	"pnpm": {
+		"overrides": {
+			"sharp": ">=0.35.0",
+			"brace-expansion": ">=5.0.8"
+		}
+	}
 }
