@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@ai-sdk/deepgram": "^3.0.12",
-    "@ai-sdk/deepseek": "^3.0.13",
-    "@ai-sdk/huggingface": "^2.0.14",
+    "@ai-sdk/deepgram": "^3.1.29",
+    "@ai-sdk/deepseek": "^3.0.63",
+    "@ai-sdk/huggingface": "^2.0.67",
     "@ai-sdk/openai": "4.0.20",
-    "@ai-sdk/replicate": "^3.0.13",
-    "@ai-sdk/xai": "^4.0.18",
+    "@ai-sdk/replicate": "^3.0.59",
+    "@ai-sdk/xai": "^4.0.59",
     "ai": "7.0.37",
     "dotenv": "17.4.2",
     "hono": "4.12.32",
-    "zod": "^4.4.3"
+    "zod": "^4.6.6"
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
