@@ -23,5 +23,11 @@
     "overrides": {
       "vite": "8.3.8"
     }
+  },
+  "overrides": {
+    "vite": "8.3.8"
+  },
+  "resolutions": {
+    "vite": "8.3.8"
   }
 }
